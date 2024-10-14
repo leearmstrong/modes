@@ -59,8 +59,38 @@ func (category AircraftCategorySetD) ToString() string {
 	}
 }
 
+// ToShortString returns a basic category and type concatenated
+func (category AircraftCategorySetD) ToShortString() string {
+
+	switch category {
+	case ACSDReserved0:
+		return "D0"
+	case ACSDReserved1:
+		return "D1"
+	case ACSDReserved2:
+		return "D2"
+	case ACSDReserved3:
+		return "D3"
+	case ACSDReserved4:
+		return "D4"
+	case ACSDReserved5:
+		return "D5"
+	case ACSDReserved6:
+		return "D6"
+	case ACSDReserved7:
+		return "D7"
+	default:
+		return fmt.Sprintf("%v - Unknown code", category)
+	}
+}
+
 // CheckCoherency checks that the Category is coherent
 func (category AircraftCategorySetD) CheckCoherency() error {
 
 	return errors.New("field FormatTypeCode is 1 (Category set D) which is a reserved Category set")
+}
+
+// GetCategoryString returns the string of the set and category
+func (category AircraftCategorySetD) GetCategoryString() string {
+	return "D1"
 }
