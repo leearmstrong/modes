@@ -10,7 +10,7 @@ import (
 	"github.com/twuillemin/modes/pkg/bds/register"
 )
 
-// AircraftIdentificationAndCategory is a message at the format BDS 0,6
+// AircraftIdentificationAndCategory is a message at the format BDS 0,8
 type AircraftIdentificationAndCategory struct {
 	FormatTypeCode byte
 	Category       fields.AircraftCategory
