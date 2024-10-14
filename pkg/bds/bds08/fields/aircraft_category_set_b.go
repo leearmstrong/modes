@@ -85,8 +85,3 @@ func (category AircraftCategorySetB) ToShortString() string {
 func (category AircraftCategorySetB) CheckCoherency() error {
 	return nil
 }
-
-// GetCategoryString returns the string of the set and category
-func (category AircraftCategorySetB) GetCategoryString() string {
-	return "B1"
-}

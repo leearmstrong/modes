@@ -89,8 +89,3 @@ func (category AircraftCategorySetD) CheckCoherency() error {
 
 	return errors.New("field FormatTypeCode is 1 (Category set D) which is a reserved Category set")
 }
-
-// GetCategoryString returns the string of the set and category
-func (category AircraftCategorySetD) GetCategoryString() string {
-	return "D1"
-}
