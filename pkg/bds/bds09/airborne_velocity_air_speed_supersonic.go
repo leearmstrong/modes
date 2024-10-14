@@ -18,6 +18,7 @@ type AirborneVelocityAirSpeedSupersonic struct {
 	MagneticHeading                float32
 	AirspeedStatus                 fields.NumericValueStatus
 	Airspeed                       uint16
+	AirspeedType                   fields.AirSpeedType
 	VerticalRateSource             fields.VerticalRateSource
 	VerticalRateStatus             fields.NumericValueStatus
 	VerticalRate                   int16
@@ -50,6 +51,7 @@ func (message AirborneVelocityAirSpeedSupersonic) ToString() string {
 		"Magnetic Heading Status:             %v\n"+
 		"Magnetic Heading (degrees):          %v\n"+
 		"Air Speed Status:                    %v\n"+
+		"Air Speed Type:                      %v\n"+
 		"Air Speed (knots):                   %v\n"+
 		"Vertical Rate Source:                %v\n"+
 		"Vertical Rate Status:                %v\n"+
@@ -64,6 +66,7 @@ func (message AirborneVelocityAirSpeedSupersonic) ToString() string {
 		message.MagneticHeadingStatus.ToString(),
 		message.MagneticHeading,
 		message.AirspeedStatus.ToString(),
+		message.AirspeedType.ToString(),
 		message.Airspeed,
 		message.VerticalRateSource.ToString(),
 		message.VerticalRateStatus.ToString(),
@@ -93,6 +96,7 @@ func ReadAirborneVelocityAirSpeedSupersonic(data []byte) (*AirborneVelocityAirSp
 	airSpeed, airSpeedStatus := fields.ReadAirspeedSupersonic(data)
 	verticalRate, verticalRateStatus := fields.ReadVerticalRate(data)
 	diffBaro, diffBaroStatus := fields.ReadHeightDifference(data)
+	airSpeedType := fields.ReadAirspeedType(data)
 
 	return &AirborneVelocityAirSpeedSupersonic{
 		FormatTypeCode:                 formatTypeCode,
@@ -104,6 +108,7 @@ func ReadAirborneVelocityAirSpeedSupersonic(data []byte) (*AirborneVelocityAirSp
 		MagneticHeading:                magneticHeading,
 		AirspeedStatus:                 airSpeedStatus,
 		Airspeed:                       airSpeed,
+		AirspeedType:                   airSpeedType,
 		VerticalRateSource:             fields.ReadVerticalRateSource(data),
 		VerticalRateStatus:             verticalRateStatus,
 		VerticalRate:                   verticalRate,
