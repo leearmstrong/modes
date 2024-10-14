@@ -94,9 +94,18 @@ func ReadAircraftIdentificationAndCategory(data []byte) (*AircraftIdentification
 		chars[i] = encoding.IdentificationCharacterCoding[code]
 	}
 
+	// Find the last non-space character
+	end := 7
+	for end >= 0 && chars[end] == ' ' {
+		end--
+	}
+
+	// Create a new slice without trailing spaces
+	trimmedChars := chars[:end+1]
+
 	return &AircraftIdentificationAndCategory{
 		FormatTypeCode: formatTypeCode,
 		Category:       category,
-		Identification: string(chars),
+		Identification: string(trimmedChars),
 	}, nil
 }
