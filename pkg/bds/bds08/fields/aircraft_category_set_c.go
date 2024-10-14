@@ -59,6 +59,31 @@ func (category AircraftCategorySetC) ToString() string {
 	}
 }
 
+// ToShortString returns a basic category and type concatenated
+func (category AircraftCategorySetC) ToShortString() string {
+
+	switch category {
+	case ACSCNoCategory:
+		return "C0"
+	case ACSCSurfaceEmergency:
+		return "C1"
+	case ACSCSurfaceService:
+		return "C2"
+	case ACSCFixedOrObstruction:
+		return "C3"
+	case ACSCReserved1:
+		return "C4"
+	case ACSCReserved2:
+		return "C5"
+	case ACSCReserved3:
+		return "C6"
+	case ACSCReserved4:
+		return "C7"
+	default:
+		return fmt.Sprintf("%v - Unknown code", category)
+	}
+}
+
 // CheckCoherency checks that the Category is coherent
 func (category AircraftCategorySetC) CheckCoherency() error {
 
@@ -67,4 +92,9 @@ func (category AircraftCategorySetC) CheckCoherency() error {
 	}
 
 	return nil
+}
+
+// GetCategoryString returns the string of the set and category
+func (category AircraftCategorySetC) GetCategoryString() string {
+	return "C1"
 }

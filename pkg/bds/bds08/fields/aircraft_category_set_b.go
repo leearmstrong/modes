@@ -56,7 +56,37 @@ func (category AircraftCategorySetB) ToString() string {
 	}
 }
 
+// ToShortString returns a basic category and type concatenated
+func (category AircraftCategorySetB) ToShortString() string {
+
+	switch category {
+	case ACSBNoCategory:
+		return "B0"
+	case ACSBGliderSailplane:
+		return "B1"
+	case ACSBLighterThanAir:
+		return "B2"
+	case ACSBParachutistSkydiver:
+		return "B3"
+	case ACSBUltralightParaglider:
+		return "B4"
+	case ACSBReserved:
+		return "B5"
+	case ACSBUnmannedAerialVehicle:
+		return "B6"
+	case ACSBSpace:
+		return "B7"
+	default:
+		return fmt.Sprintf("%v - Unknown code", category)
+	}
+}
+
 // CheckCoherency checks that the Category is coherent
 func (category AircraftCategorySetB) CheckCoherency() error {
 	return nil
+}
+
+// GetCategoryString returns the string of the set and category
+func (category AircraftCategorySetB) GetCategoryString() string {
+	return "B1"
 }

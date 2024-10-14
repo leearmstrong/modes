@@ -10,4 +10,7 @@ type AircraftCategory interface {
 	ToString() string
 	// CheckCoherency checks that the Category is coherent
 	CheckCoherency() error
+
+	// ToShortString returns a basic category and type concatenated
+	ToShortString() string
 }

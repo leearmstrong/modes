@@ -56,6 +56,30 @@ func (category AircraftCategorySetA) ToString() string {
 	}
 }
 
+// ToShortString returns a basic category and type concatenated
+func (category AircraftCategorySetA) ToShortString() string {
+	switch category {
+	case ACSANoCategory:
+		return "A0"
+	case ACSALight:
+		return "A1"
+	case ACSAMedium1:
+		return "A2"
+	case ACSAMedium2:
+		return "A3"
+	case ACSAHighVortex:
+		return "A4"
+	case ACSAHeavy:
+		return "A5"
+	case ACSAHighPerformance:
+		return "A6"
+	case ACSARotorCraft:
+		return "A7"
+	default:
+		return fmt.Sprintf("%v - Unknown code", category)
+	}
+}
+
 // CheckCoherency checks that the Category is coherent
 func (category AircraftCategorySetA) CheckCoherency() error {
 	return nil
