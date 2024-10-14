@@ -93,8 +93,3 @@ func (category AircraftCategorySetC) CheckCoherency() error {
 
 	return nil
 }
-
-// GetCategoryString returns the string of the set and category
-func (category AircraftCategorySetC) GetCategoryString() string {
-	return "C1"
-}
