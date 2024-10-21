@@ -1,7 +1,6 @@
 package fields
 
 import (
-	"fmt"
 	"github.com/twuillemin/modes/pkg/bitutils"
 	"github.com/twuillemin/modes/pkg/modes/common"
 )
@@ -74,8 +73,15 @@ func ReadIdentity(message common.MessageData) Identity {
 	c := c4<<2 | c2<<1 | c1
 	d := d4<<2 | d2<<1 | d1
 
+	// Replace fmt.Sprintf with a more efficient string construction
+	identityStr := make([]byte, 4)
+	identityStr[0] = byte(a + '0')
+	identityStr[1] = byte(b + '0')
+	identityStr[2] = byte(c + '0')
+	identityStr[3] = byte(d + '0')
+
 	return Identity{
-		Identity: fmt.Sprintf("%v%v%v%v", a, b, c, d),
+		Identity: string(identityStr),
 	}
 }
 
