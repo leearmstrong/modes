@@ -34,14 +34,10 @@ func (status SelectedHeadingStatus) ToString() string {
 func ReadSelectedHeading(data []byte) (float32, SelectedHeadingStatus) {
 	status := SelectedHeadingStatus((data[3] & 0x04) >> 2)
 
-	negative := data[3]&0x02 != 0
+	heading_sign := data[3] & 0x02 >> 1
 	byte1 := data[3] & 0x01
 	byte2 := data[4] & 0xFE
 	heading := float32(bitutils.Pack2Bytes(byte1, byte2) >> 1)
 
-	if negative {
-		heading = -heading
-	}
-
-	return heading * 180 / 256, status
+	return float32(heading_sign+1) * heading * 180 / 256, status
 }
